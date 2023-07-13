@@ -27,7 +27,7 @@ public class SystemUntil {
     private final static Logger logger = LoggerFactory.getLogger(SystemUntil.class);
 
     // 定义时间片大小（毫秒）
-    static final int TIME = 1000;
+    public static final int TIME = 1000;
     // 100兆
     static final int MB100 = 104857600;
 

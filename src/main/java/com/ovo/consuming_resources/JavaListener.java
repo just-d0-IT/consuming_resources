@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import oshi.util.Util;
 
 import static com.ovo.consuming_resources.util.SystemUntil.*;
-import static java.sql.Types.TIME;
 /**
  * @author ovo
  * @version 1.0.0
