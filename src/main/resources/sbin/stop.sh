@@ -15,8 +15,7 @@
 # limitations under the License.
 
 ##############################################################################
-#30分钟一次执行脚本
-#root权限修改 vi /etc/crontab 配置文件并加入任务计划
+#root权限修改 vi /etc/crontab 配置文件删除或注释资源消耗任务计划
 #*/30 * * * * root sh /root/ovo/consuming_resources/start.sh &>/dev/null 2>&1
 ##############################################################################
 
@@ -35,7 +34,3 @@ else
   echo ">>> kill -9 $pid"
   kill -9 $pid
 fi
-
-# 获取最大内存大小（以GB为单位）
-max_memory=$(free -g | awk '/Mem:/{print $2}')
-nohup $JAVA_HOME/bin/java -Xmx${max_memory}g -jar $SERVICE_HOME/$SERVICE_NAME -c:35 -m:50 > $SERVICE_HOME/ovo_consuming_resources.log 2>&1 &
