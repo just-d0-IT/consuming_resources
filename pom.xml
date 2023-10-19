@@ -49,9 +49,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.4.1</version>
+                <version>3.2.4</version>
                 <configuration>
                     <createDependencyReducedPom>true</createDependencyReducedPom>
+                    <!--                    <createDependencyReducedPom>false</createDependencyReducedPom>-->
+                    <!--                    <shadedArtifactAttached>false</shadedArtifactAttached>-->
+                    <!--                    <shadedClassifierName>standalone</shadedClassifierName>-->
                 </configuration>
                 <executions>
                     <execution>
@@ -59,22 +62,22 @@
                         <goals>
                             <goal>shade</goal>
                         </goals>
-                        <configuration>
-                            <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                </transformer>
-                            </transformers>
-                        </configuration>
+                        <!--                        <configuration>-->
+                        <!--                            <transformers>-->
+                        <!--                                <transformer-->
+                        <!--                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>-->
+                        <!--                                <transformer-->
+                        <!--                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
+                        <!--                                </transformer>-->
+                        <!--                            </transformers>-->
+                        <!--                        </configuration>-->
                     </execution>
                 </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
+                <version>3.2.0</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -82,6 +85,8 @@
                             <mainClass>${main.class}</mainClass>
                         </manifest>
                     </archive>
+                    <!-- 定义要生成的JAR包的classifier，例如这里使用"exec" -->
+                    <!--                    <classifier>exec</classifier>-->
                 </configuration>
             </plugin>
             <plugin>
@@ -93,6 +98,39 @@
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-assembly-plugin</artifactId>-->
+<!--                <version>3.3.0</version>-->
+<!--                <configuration>-->
+<!--                    <encoding>UTF-8</encoding>-->
+<!--                    <finalName>consuming_resources</finalName>-->
+<!--                    <appendAssemblyId>false</appendAssemblyId>-->
+<!--                    <outputDirectory>output</outputDirectory>-->
+<!--                    <archive>-->
+<!--                        <manifest>-->
+<!--                            <mainClass>${main.class}</mainClass>-->
+<!--                        </manifest>-->
+<!--                        &lt;!&ndash;                        <descriptorRefs>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            <descriptorRef>jar-with-dependencies</descriptorRef>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        </descriptorRefs>&ndash;&gt;-->
+<!--                    </archive>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>make-assembly</id>-->
+<!--                        <phase>package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>single</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <descriptors>-->
+<!--                                <descriptor>src/main/assembly/assembly.xml</descriptor>-->
+<!--                            </descriptors>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 
